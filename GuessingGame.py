@@ -7,10 +7,11 @@ def Game():
         maxGuess = int(input("Now pick a maximum value: "))
     except:
         print("Numbers are hard, aren't they?")
+        return
 
     if minGuess > maxGuess:
         print("That's not how numbers work, fuckwad")
-        exit()
+        return
 
     goal = random.randint(minGuess, maxGuess)
     tries = 1
@@ -22,7 +23,7 @@ def Game():
             print("That's not a number you dunce.")
             continue
         if guess == goal:
-            print("Whoopdeefuckingdoo, you got it. Took you %d tries, you fucking schlomo."%tries)
+            print(f"Whoopdeefuckingdoo, you got it. Took you {tries} tries, you fucking schlomo.")
             playAgain = input("Play again? (Y/N): ")
             if playAgain == "Y":
                 clearConsole()
