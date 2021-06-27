@@ -29,7 +29,7 @@ class GuessingGame:
                 playAgain = input("Play again? (Y/N): ")
                 if playAgain == "Y":
                     self.clearConsole()
-                    self.Game()
+                    self.gameStart()
                     break
                 
                 elif playAgain == "N":
@@ -45,9 +45,12 @@ class GuessingGame:
                 print("Guessed too low!")
             tries += 1
 
-    def clearConsole():
+    def clearConsole(self):
         command = 'clear'
         if os.name in ('nt', 'dos'):
             command = 'cls'
         os.system(command)
+
+if __name__ == "__main__":
+    GuessingGame().gameStart()
                 

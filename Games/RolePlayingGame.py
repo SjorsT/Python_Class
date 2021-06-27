@@ -124,7 +124,6 @@ class RolePlayingGame:
         return healAmount
 
 if __name__ == "__main__":
-    game = RolePlayingGame()
-    game.gameStart()
+    RolePlayingGame().gameStart()
 
     
