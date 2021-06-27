@@ -13,10 +13,7 @@ class Menu:
 
         x = input("Please select your program by using the assigned numbers:\n1: Roleplaying Game\n2: Guessing Game\n3: Rock paper scissors\nType 'exit' to exit the program\n")
         if x == "exit":
-            print("Aight I'mma head out")
-            time.sleep(3)
-            self.clearConsole()
-            exit()
+            self.exitProgram()
         elif x == "1":
             game1.gameStart()
         elif x == "2":
@@ -27,6 +24,12 @@ class Menu:
             print("That program does not exist yet!")
         
         self.chooseMenu()
+
+    def exitProgram():
+        print("Aight I'mma head out")
+        time.sleep(3)
+        self.clearConsole()
+        exit()
 
     def clearConsole(self):
         command = 'clear'
