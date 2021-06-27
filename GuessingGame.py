@@ -37,9 +37,11 @@ def Game():
             else:
                 print("Ok fuck off then with your made up bullshit. This is why we can't have nice things.")
                 break
+        elif guess > goal:
+            print("Guessed too high!")
         else:
-            tries += 1
-            print("Wrong. Try again.")
+            print("Guessed too low!")
+        tries += 1
 
 def clearConsole():
     command = 'clear'
