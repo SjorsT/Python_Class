@@ -1,12 +1,11 @@
 import random
 
-print('Enter the amount of sides')
-x = input()
+def dice():
+    try:
+        x = int(input('Enter the amount of sides: '))
+        print(random.randint(1, x))
+    except:
+        print("Invalid input!")
+    dice()
 
-try:
-    x = int(x)
-    print(random.randint(1, x))
-
-except:
-    print("Invalid input!")
-
+dice()
