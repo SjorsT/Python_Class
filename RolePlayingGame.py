@@ -5,15 +5,7 @@ import time
 global battleNo
 battleNo = 0
 
-class Player:
-    def __init__(self, name):
-        self.name = name
-        self.maxHP = 100
-        self.currentHP = self.maxHP
-        self.damage = 10
-        self.status = "open"
-
-class Enemy:
+class Entity:
     def __init__(self, name, maxHP, damage):
         self.name = name
         self.maxHP = maxHP
@@ -21,11 +13,26 @@ class Enemy:
         self.damage = damage
         self.status = "open"
 
+class Player(Entity):
+    def __init__(self, name):
+        maxHP = 100
+        damage = 5
+        self.gold = 50
+        super().__init__(name, maxHP, damage)
+
+
+class Enemy(Entity):
+    def __init__(self, name, maxHP, damage, exp):
+        super().__init__(name, maxHP, damage)
+        self.exp = exp
+
+
+
 def gameStart():
     
     pName = input("To begin, please enter your name: ")
     global p
-    p = Player(pName)
+    p = Player(pName, )
     print("Tip: When in battle, type 'punch' to attack or 'block' to block some damage and heal a tiny bit!")
     battleStart()
 
@@ -41,7 +48,8 @@ def initEnemy():
     global e
     hp = 50 + (10 * battleNo)
     damage = 5 + (1 * battleNo)
-    e = Enemy("Verhage Clone", hp, damage)
+    exp = 50 + (5 * battleNo)
+    e = Enemy("Verhage Clone", hp, damage, exp)
     print(f"A wild {e.name} appeared!")
 
 def playerTurn():
