@@ -25,7 +25,7 @@ class Menu:
         
         self.chooseMenu()
 
-    def exitProgram():
+    def exitProgram(self):
         print("Aight I'mma head out")
         time.sleep(3)
         self.clearConsole()
