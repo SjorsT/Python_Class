@@ -6,6 +6,7 @@ class RolePlayingGame:
 
     def __init__(self):
         self.battleNo = 0
+        self.playing = True
     
 
     class Entity:
@@ -40,7 +41,6 @@ class RolePlayingGame:
         self.battleStart()
 
     def battleStart(self):
-        global battleNo
         self.battleNo += 1
         self.initEnemy()
         
@@ -56,16 +56,17 @@ class RolePlayingGame:
         print(f"A wild {e.name} appeared!")
 
     def playerTurn(self):
-        playerAction = input("Choose an action: ")
-        if playerAction == 'punch':
-            self.processHit(p, e)
-            self.enemyTurn()
-        elif playerAction == 'block':
-            self.processBlock(p)
-            self.enemyTurn()
-        else:
-            print("That is not a valid action!")
-            self.playerTurn()
+        if self.playing:
+            playerAction = input("Choose an action: ")
+            if playerAction == 'punch':
+                self.processHit(p, e)
+                self.enemyTurn()
+            elif playerAction == 'block':
+                self.processBlock(p)
+                self.enemyTurn()
+            else:
+                print("That is not a valid action!")
+                self.playerTurn()
 
     def enemyTurn(self):
         self.processHit(e, p)
@@ -102,7 +103,7 @@ class RolePlayingGame:
         print(f"{actor.name} has defeated {target.name}!")
         if isinstance(target, self.Player):
             print("Game over!")
-            exit()
+            self.playing = False
         else:
             print("Good job, but it's not over yet!")
             time.sleep(2)
